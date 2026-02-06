@@ -15,7 +15,7 @@ provider "aws" {
 # Choose two AZs
 variable "azs" {
   type    = list(string)
-  default = ["ap-southa", "ap-southb"]
+  default = ["ap-south-1a", "ap-south-1b"]
 }
  
 # Your Ubuntu AMI (us-east-1)
