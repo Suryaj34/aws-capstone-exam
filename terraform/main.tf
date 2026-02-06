@@ -162,7 +162,7 @@ resource "aws_instance" "web" {
   vpc_security_group_ids      = [aws_security_group.web_sg.id]
   associate_public_ip_address = true
  
-  key_name = "02-06-2026-Nvirginia"   # ← use your existing AWS key pair name
+  key_name = "dec-25-surya-mum"   # ← use your existing AWS key pair name
  
   tags = {
     Name = "streamline-web-${count.index + 1}"
