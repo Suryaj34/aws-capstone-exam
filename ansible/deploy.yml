@@ -20,7 +20,7 @@
 
     - name: Clone GitHub Repo
       git:
-        repo: 'https://github.com/<your-repo>.git'
+        repo: 'https://github.com/Suryaj34/Jenkins-Lab.git'
         dest: /var/www/html
     - name: Ensure Apache is running
       service:
