@@ -76,7 +76,7 @@ resource "aws_route_table_association" "private_assoc" {
 }
  
 resource "aws_security_group" "web_sg" {
-  name        = "streamline-web-sg-new"
+  name        = "streamline-web-sg-new1"
   description = "Allow HTTP from anywhere and SSH from my IP"
   vpc_id      = data.aws_vpc.default.id
  
@@ -103,11 +103,11 @@ ingress {
     cidr_blocks = ["0.0.0.0/0"]
   }
  
-  tags = { Name = "streamline-web-sg-new" }
+  tags = { Name = "streamline-web-sg-new1" }
 }
  
-resource "aws_security_group" "db_sg" {
-  name        = "streamline-db-sg"
+resource "aws_security_group" "db_sg1" {
+  name        = "streamline-db-sg1"
   description = "Allow MySQL from web SG only"
   vpc_id      = data.aws_vpc.default.id
  
@@ -130,14 +130,14 @@ resource "aws_security_group" "db_sg" {
 }
  
  
-resource "aws_db_subnet_group" "db_subnets" {
-  name       = "streamline-db-subnet-group1"
+resource "aws_db_subnet_group" "db_subnets1" {
+  name       = "streamline-db-subnet-group11"
   subnet_ids = aws_subnet.private[*].id
-  tags       = { Name = "streamline-db-subnet-group1" }
+  tags       = { Name = "streamline-db-subnet-group11" }
 }
  
 resource "aws_db_instance" "mysql" {
-  identifier              = "streamline-db1"
+  identifier              = "streamline-db11"
   allocated_storage       = 20
   engine                  = "mysql"
   engine_version          = "8.0"
@@ -170,7 +170,7 @@ resource "aws_instance" "web" {
 }
  
 resource "aws_lb" "app_lb" {
-  name               = "streamline-alb"
+  name               = "streamline-alb1"
   internal           = false
   load_balancer_type = "application"
   subnets            = local.selected_public_subnet_ids
@@ -178,7 +178,7 @@ resource "aws_lb" "app_lb" {
 }
  
 resource "aws_lb_target_group" "tg" {
-  name     = "streamline-tg"
+  name     = "streamline-tg1"
   port     = 80
   protocol = "HTTP"
   vpc_id   = data.aws_vpc.default.id
