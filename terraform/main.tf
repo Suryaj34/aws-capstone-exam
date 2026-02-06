@@ -76,7 +76,7 @@ resource "aws_route_table_association" "private_assoc" {
 }
  
 resource "aws_security_group" "web_sg" {
-  name        = "streamline-web-sg"
+  name        = "streamline-web-sg-new"
   description = "Allow HTTP from anywhere and SSH from my IP"
   vpc_id      = data.aws_vpc.default.id
  
@@ -103,7 +103,7 @@ ingress {
     cidr_blocks = ["0.0.0.0/0"]
   }
  
-  tags = { Name = "streamline-web-sg" }
+  tags = { Name = "streamline-web-sg-new" }
 }
  
 resource "aws_security_group" "db_sg" {
@@ -131,9 +131,9 @@ resource "aws_security_group" "db_sg" {
  
  
 resource "aws_db_subnet_group" "db_subnets" {
-  name       = "streamline-db-subnet-group"
+  name       = "streamline-db-subnet-group1"
   subnet_ids = aws_subnet.private[*].id
-  tags       = { Name = "streamline-db-subnet-group" }
+  tags       = { Name = "streamline-db-subnet-group1" }
 }
  
 resource "aws_db_instance" "mysql" {
